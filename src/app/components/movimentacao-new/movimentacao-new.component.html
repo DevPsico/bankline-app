@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-6">Movimentação</h1>
+        <p class="lead-1">Inclusão de uma nova movimentação</p>
+        <hr class="my-2">
+        
+        
+            <div class="col-md-3">
+              <label for="iData" class="form-label">Data</label>
+              <!--NgModel tem que tá igual ao MOVIMENTACAO-NEW-COMPONENT.TS, para saber oq vai ser coletado-->
+              <input type="date" [(ngModel)]="dataHora" class="form-control" id="iData">
+            </div>
+            <div class="col-md-9">
+              
+              <!-- ngModel serve para saber qual corretistaSelecionado no SELECT (HTML), tem que ter tbm
+              no MOVIMENTACAO-NEW.COMPONENT.TS-->
+              <label for="iCorrentista"  class="form-label">Correntista</label>
+              <select id="iCorrentista" [(ngModel)]="correntistaSelecionado" class="form-select">
+                <option selected>Escolha o correntista</option>
+                <!-- Qui fazemos um FOR no CORRENTISTAS e populamos o SELECT (HTML)-->
+                <option *ngFor="let c of correntistas" [ngValue]="c">{{c.cpf}} - {{c.nome}} </option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="iDescricao" class="form-label">Descrição</label>
+              <!--NgModel tem que tá igual ao MOVIMENTACAO-NEW-COMPONENT.TS, para saber oq vai ser coletado-->
+              <input type="text" class="form-control" [(ngModel)]="descricao" id="iDescricao" placeholder="Informe uma descrição">
+            </div>
+            <div class="col-md-3">
+              <label for="iTipo" class="form-label">Tipo Movimentação</label>
+              <!--NgModel tem que tá igual ao MOVIMENTACAO-NEW-COMPONENT.TS, para saber oq vai ser coletado-->
+              <select id="iTipo" [(ngModel)]="tipo" class="form-select">
+                <option selected>Tipos</option>
+                <option>RECEITA</option>
+                <option>DESPESA</option>
+                
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="iValor"  class="form-label">R$ Valor</label>
+              <!--Colocamos a mascara CURRENCYMASK ||| NgModel tem que tá igual ao MOVIMENTACAO-NEW-COMPONENT.TS, para saber oq vai ser coletado-->
+              <input type="text" [(ngModel)]="valor" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control" id="iValor">
+            </div>
+            <div class="d-grid gap-2 d-md-flex ">
+                <!--Click vai ser o METODO chamado no TYPESCRIPT-->
+                <button class="btn btn-outline-primary me-md-2" (click)="save()" routerLink="/movimentacoes" type="button">Confirmar</button>
+                <a routerLink="/movimentacoes" class="btn btn-outline-secondary">Cancelar</a>
+              </div>
+         
+      </div>
+
+</div>
