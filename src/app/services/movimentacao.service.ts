@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 //aqui fazemos a comunicao com a API local, dps mudar p HEROKU deixar tudo
-const baseUrl = 'http://localhost:8080';
+//const baseUrl = 'http://localhost:8080';
+const baseUrl = 'https://bankline-api-ericson.herokuapp.com'
 
 @Injectable({
   providedIn: 'root'
